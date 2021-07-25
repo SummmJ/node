@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+    <style>
+        .banner{
+            width: 300px;
+            height: 300px;
+            display: flex;
+            flex-direction:column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let res1 =  [
+            {
+                "userID": 5131,
+                "songID": 1303289043,
+                "favorite_value": -1
+            },
+            {
+                "userID": 5131,
+                "songID": 1432084977,
+                "favorite_value": 2
+            },
+            {
+                "userID": 5131,
+                "songID": 1441758494,
+                "favorite_value": -1
+            },
+            {
+                "userID": 5131,
+                "songID": 1496020025,
+                "favorite_value": -1
+            },
+            {
+                "userID": 5131,
+                "songID": 1825647671,
+                "favorite_value": -1
+            },
+            {
+                "userID": 5131,
+                "songID": 1827600686,
+                "favorite_value": -1
+            },
+            {
+                "userID": 5131,
+                "songID": 1828383192,
+                "favorite_value": -1
+            },
+            {
+                "userID": 5131,
+                "songID": 1832684671,
+                "favorite_value": -1
+            },
+            {
+                "userID": 5322,
+                "songID": 108251,
+                "favorite_value": -1
+            },
+            {
+                "userID": 5322,
+                "songID": 369079,
+                "favorite_value": 2
+            },
+            {
+                "userID": 5322,
+                "songID": 386181,
+                "favorite_value": -1
+            },
+            {
+                "userID": 5322,
+                "songID": 441491828,
+                "favorite_value": -1
+            },
+            {
+                "userID": 5322,
+                "songID": 531295576,
+                "favorite_value": 2
+            },
+            {
+                "userID": 5322,
+                "songID": 1415829224,
+                "favorite_value": -1
+            },
+            {
+                "userID": 5322,
+                "songID": 1432084977,
+                "favorite_value": 2
+            },
+            {
+                "userID": 5322,
+                "songID": 1496020025,
+                "favorite_value": 2
+            },
+            {
+                "userID": 5322,
+                "songID": 1828383192,
+                "favorite_value": -1
+            },
+            {
+                "userID": 5613,
+                "songID": 29092874,
+                "favorite_value": 2
+            },
+            {
+                "userID": 5613,
+                "songID": 461544627,
+                "favorite_value": -1
+            },
+            {
+                "userID": 9141,
+                "songID": 369079,
+                "favorite_value": -1
+            },
+            {
+                "userID": 9141,
+                "songID": 441491828,
+                "favorite_value": -1
+            },
+            {
+                "userID": 9141,
+                "songID": 531295576,
+                "favorite_value": -1
+            },
+            {
+                "userID": 9141,
+                "songID": 1432084977,
+                "favorite_value": 2
+            },
+            {
+                "userID": 9141,
+                "songID": 1496020025,
+                "favorite_value": 2
+            },
+            {
+                "userID": 9141,
+                "songID": 1828383192,
+                "favorite_value": 2
+            },
+            {
+                "userID": 9141,
+                "songID": 1833633769,
+                "favorite_value": 2
+            },
+            {
+                "userID": 9656,
+                "songID": 185712,
+                "favorite_value": -1
+            },
+            {
+                "userID": 9656,
+                "songID": 369079,
+                "favorite_value": -1
+            },
+            {
+                "userID": 9656,
+                "songID": 386181,
+                "favorite_value": -1
+            },
+            {
+                "userID": 9656,
+                "songID": 441491828,
+                "favorite_value": -1
+            },
+            {
+                "userID": 9656,
+                "songID": 531295576,
+                "favorite_value": -1
+            },
+            {
+                "userID": 9656,
+                "songID": 1415829224,
+                "favorite_value": -1
+            },
+            {
+                "userID": 9656,
+                "songID": 1432084977,
+                "favorite_value": -1
+            },
+            {
+                "userID": 9656,
+                "songID": 1496020025,
+                "favorite_value": -1
+            },
+            {
+                "userID": 9656,
+                "songID": 1828383192,
+                "favorite_value": -1
+            }
+        ]
+        let res2 = [
+            {
+                "userID": 1001
+            },
+            {
+                "userID": 1002
+            },
+            {
+                "userID": 1003
+            },
+            {
+                "userID": 5131
+            },
+            {
+                "userID": 5322
+            },
+            {
+                "userID": 5613
+            },
+            {
+                "userID": 9141
+            },
+            {
+                "userID": 9656
+            }
+        ]
+       
+       
+    
+        function changeToMatrix (arr, arr2) {
+            let len = arr.length
+            let matrix = new Array(arr2.length + 1)
+            for(let i = 0; i < matrix.length; i++) {
+                matrix[i] = []
+            }
+            // 以二维数组的表格形式存放数据
+            for(let i = 0; i < arr2.length; i++) {
+                matrix[i + 1][0] = arr2[i].userID
+            }
+            matrix[0][0] = ''
+            for(let i = 0; i < len; i++) {
+                if(matrix[0].indexOf(arr[i].songID) === -1) {
+                    matrix[0].push(arr[i].songID)
+                }
+            }
+            // 在表格中插入数据
+            for(let i = 1; i < matrix.length; i++) {
+                for(let j = 1; j < matrix[0].length; j++) {
+                    matrix[i][j] = 0
+                }
+            }
+            
+            for(let i = 0; i < len; i++) {
+                let x = 0
+                for(let j = 1; j < matrix.length; j++) {
+                    let index = matrix[j].indexOf(arr[i].userID)
+                    if (index != -1) {
+                       x = j
+                    } 
+                }
+                let y = 0
+                let index = matrix[0].indexOf(arr[i].songID)
+                if(index != -1) {
+                    y = index
+                    matrix[x][y] = arr[i].favorite_value
+                }
+            }
+            
+            return matrix
+        }
+
+        function findSimilar (matrix, userID) {
+            let userIndex = 0
+            for(let j = 0; j < matrix.length; j++) {
+                if (matrix[j].indexOf(userID) != -1) {
+                    userIndex = j
+                } 
+            }
+            let mainUser = matrix[userIndex]
+            matrix.splice(userIndex,1)
+            matrix.splice(0,1)
+            let otherUsers = matrix
+            // let otherUsers = matrix.slice(1, userIndex + 1).concat(userIndex, matrix.length - 1)
+            let res = {}
+            console.log(mainUser)
+            for(let i = 0; i < otherUsers.length; i++) {
+                let user = otherUsers[i][0]
+                // 向量点积
+                let Vector_dot_product = 0
+                // 向量长度的叉积
+                let Cross_product_of_vector_length = 0
+                for(let j = 1; j < otherUsers[0].length - 1; j++) {
+                    Vector_dot_product += mainUser[j] * otherUsers[i][j]
+                }
+                let cr1 = 0
+                let cr2 = 0
+                for(let k = 1; k < otherUsers[0].length - 1; k++) {
+                    cr1 += Math.pow(mainUser[k], 2)
+                    cr2 += Math.pow(otherUsers[i][k], 2)
+                }
+                Cross_product_of_vector_length = Math.sqrt(cr1) + Math.sqrt(cr2)
+                let Similarity = (Vector_dot_product/Cross_product_of_vector_length).toFixed(2)
+                res[user] = Similarity
+            }
+            
+            return res
+        }
+
+        let matrix = changeToMatrix(res1, res2)
+        console.log(matrix)
+        let userID = 9141
+        console.log(findSimilar (matrix, userID))
+        
+
+
+    //     let res1 =  [
+    //     {
+    //         "userID": 1001,
+    //         "songID": 2001,
+    //         "favorite_value": 3
+    //     },
+    //     {
+    //         "userID": 1001,
+    //         "songID": 2002,
+    //         "favorite_value": -1
+    //     },
+    //     {
+    //         "userID": 1001,
+    //         "songID": 2003,
+    //         "favorite_value": 3
+    //     },
+    //     {
+    //         "userID": 1002,
+    //         "songID": 2001,
+    //         "favorite_value": -1
+    //     },
+    //     {
+    //         "userID": 1002,
+    //         "songID": 2002,
+    //         "favorite_value": 3
+    //     },
+    //     {
+    //         "userID": 1002,
+    //         "songID": 2003,
+    //         "favorite_value": 1
+    //     },
+    //     {
+    //         "userID": 1003,
+    //         "songID": 2001,
+    //         "favorite_value": 2
+    //     },
+    //     {
+    //         "userID": 1003,
+    //         "songID": 2003,
+    //         "favorite_value": 2
+    //     }
+    // ]
+    //     let res3 = [
+    //     {
+    //         "userID": 1001
+    //     },
+    //     {
+    //         "userID": 1002
+    //     },
+    //     {
+    //         "userID": 1003
+    //     }
+    // ]
+        
+    // let aa = changeToMatrix(res1, res3)
+    // console.log(aa)
+    // console.log(findSimilar (aa, 1001))
+
+    
+
+    </script>
+</body>
+</html>
